@@ -25,7 +25,8 @@ def build_retriever():
             )
         
         index = vectorstore.index
-        index_to_docstore = vectorstore.docstore._dict
+        index_to_docstore_id = vectorstore.index_to_docstore_id
+        docstore_dict = vectorstore.docstore._dict
 
     except Exception as e:
         logger.error(f"Failed to load vectore store: {e}")
@@ -57,7 +58,10 @@ def build_retriever():
                 if i == -1:
                     continue
 
-                doc = index_to_docstore.get(str(i))
+                doc_id = index_to_docstore_id.get(i)
+                if not doc_id:
+                    continue
+                doc = docstore_dict.get(doc_id)
                 if not doc or not hasattr(doc, "page_content") or not doc.page_content:
                     continue
                 if doc.page_content in seen:
