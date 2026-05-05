@@ -1,0 +1,23 @@
+2026-05-05 17:58:45,370 [INFO] 🚀 Starting ingestion
+2026-05-05 17:58:45,375 [INFO] 📁 Reading from: A:\CNCTEST\data\raw
+2026-05-05 17:58:45,376 [INFO] 💾 Saving to: A:\CNCTEST\vector_db
+2026-05-05 17:58:45,378 [INFO] 📄 Found 4 .md files: ['api.md', 'faq (1).md', 'pricing (3).md', 'product (1).md']
+2026-05-05 17:58:45,379 [INFO] ✂️ Loading and chunking documents...
+2026-05-05 17:58:45,453 [INFO] ✅ Generated 62 chunks
+2026-05-05 17:58:45,454 [INFO] 📋 Sample chunk:
+2026-05-05 17:58:45,454 [INFO]    File: api.md
+2026-05-05 17:58:45,454 [INFO]    Section: NovaSuite API Reference > Overview
+2026-05-05 17:58:45,455 [INFO]    Tokens: 106
+2026-05-05 17:58:45,455 [INFO]    Preview: The NovaSuite REST API allows developers to programmatically access and manage tickets, contacts, knowledge base articles, and agents. The base URL fo...
+2026-05-05 17:58:45,457 [INFO] 🧠 Building FAISS index...
+2026-05-05 17:58:47,874 [INFO] Loading faiss with AVX2 support.
+2026-05-05 17:58:47,908 [INFO] Successfully loaded faiss with AVX2 support.
+2026-05-05 17:58:47,925 [ERROR] ❌ Ingestion failed: [WinError 2] The system cannot find the file specified: 'A:\\CNCTEST\\vector_db\\faiss.index'
+Traceback (most recent call last):
+  File "A:\CNCTEST\inspect_faiss.py", line 57, in main
+    logger.info(f"✅ Index saved: {index_file.exists()} ({index_file.stat().st_size} bytes)")
+                                                         ^^^^^^^^^^^^^^^^^
+  File "C:\Users\stude\AppData\Local\Programs\Python\Python311\Lib\pathlib.py", line 1013, in stat
+    return os.stat(self, follow_symlinks=follow_symlinks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified: 'A:\\CNCTEST\\vector_db\\faiss.index'
